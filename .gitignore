@@ -1,0 +1,14 @@
+# Backend (security)
+security/target/
+security/.idea/
+security/*.log
+security/src/main/resources/application.yml
+
+# Frontend (college-blog-frontend)
+college-blog-frontend/node_modules/
+college-blog-frontend/dist/
+college-blog-frontend/.env
+
+# General
+.env
+.DS_Store
