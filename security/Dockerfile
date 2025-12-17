@@ -10,6 +10,16 @@ RUN chmod +x mvnw
 # Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Run the jar with the secret FORCED in the command
-# We use -Djwt.secret=... to inject it directly into Java
-ENTRYPOINT ["java", "-Djwt.secret=daa5b37abc45b967a856d283960e966725f3deb1a23bc676b32e00b65e13f084", "-jar", "target/security-0.0.1-SNAPSHOT.jar"]
+# Run the app
+# We use "Shell Form" (no brackets) so we can read variables like ${DB_URL}
+# This command injects EVERY variable manually, bypassing the broken yaml file.
+ENTRYPOINT java \
+    -Dspring.datasource.url=${DB_URL} \
+    -Dspring.datasource.username=${DB_USERNAME} \
+    -Dspring.datasource.password=${DB_PASSWORD} \
+    -Djwt.secret=${JWT_SECRET} \
+    -Dspring.mail.username=${MAIL_USERNAME} \
+    -Dspring.mail.password=${MAIL_PASSWORD} \
+    -Dapplication.frontend.reset-password-url=${FRONTEND_URL} \
+    -Dserver.port=${PORT} \
+    -jar target/security-0.0.1-SNAPSHOT.jar
