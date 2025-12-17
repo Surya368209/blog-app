@@ -153,12 +153,12 @@ export function LoginForm() {
               </label>
             </div>
             
-            <Link 
-              to="/forgot-password" 
-              className="text-sm text-primary underline-offset-4 hover:underline"
-            >
-              Forgot password?
-            </Link>
+<Link
+  to="/forgot-password"
+  className="text-sm text-indigo-600 hover:text-indigo-700 underline-offset-4 hover:underline transition-colors"
+>
+  Forgot password?
+</Link>
           </div>
 
         </CardContent>

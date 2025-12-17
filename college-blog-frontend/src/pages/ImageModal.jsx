@@ -31,16 +31,16 @@ export default function ImageModal({ isOpen, src, onClose }) {
       {/* Close Button */}
       <button 
         onClick={onClose}
-        className="absolute top-5 right-5 p-2 bg-black/50 rounded-full text-white hover:bg-white/20 transition-colors"
+        className="absolute top-2 right-1 p-2 bg-black/50 rounded-full text-white hover:bg-white/20 transition-colors"
       >
-        <X size={32} />
+        <X size={22} />
       </button>
 
       {/* The Image */}
       <img
         src={src}
         alt="Full View"
-        className="max-w-[85vw] max-h-[95vh] object-contain rounded-md shadow-2xl scale-100 transition-transform duration-300 animate-in zoom-in-95"
+        className="max-w-[80vw] max-h-[85vh] object-contain rounded-md shadow-2xl scale-100 transition-transform duration-300 animate-in zoom-in-95"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
       />
     </div>

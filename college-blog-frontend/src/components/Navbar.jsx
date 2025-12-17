@@ -11,7 +11,7 @@ export default function Navbar() {
         <span className="text-white font-bold text-lg">C</span>
       </div>
       <span className="text-xl font-bold tracking-tight text-slate-900">
-        Campus Chronicles
+        SVEC Campus
       </span>
     </Link>
   );

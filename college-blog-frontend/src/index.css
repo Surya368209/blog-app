@@ -4,66 +4,95 @@
 
 @layer base {
   :root {
-    /* --- BACKGROUNDS --- */
-    --background: 0 0% 100%;    /* White */
-    --foreground: 222.2 84% 4.9%; /* Dark Slate */
+    /* =========================
+       CORE BACKGROUND & TEXT
+       ========================= */
+    --background: 0 0% 100%;              /* Clean white */
+    --foreground: 222 47% 11%;            /* Deep neutral (not black) */
 
-    /* --- CARDS & POPUPS --- */
+    /* =========================
+       SURFACES (Cards, Modals)
+       ========================= */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 47% 11%;
 
-    /* --- PRIMARY (Indigo-600) --- */
-    /* This creates that premium "Stripe-like" blue/purple */
-    --primary: 226 70% 55%;
-    --primary-foreground: 210 40% 98%;
+    /* =========================
+       PRIMARY BRAND COLOR
+       (Calm Indigo – trust + focus)
+       ========================= */
+    --primary: 226 70% 55%;                /* Indigo-600 */
+    --primary-foreground: 210 40% 98%;    /* Soft white */
 
-    /* --- SECONDARY (Slate-100) --- */
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* =========================
+       SECONDARY / SUBTLE UI
+       ========================= */
+    --secondary: 210 40% 96%;              /* Light slate */
+    --secondary-foreground: 222 47% 11%;
 
-    /* --- MUTED (Gray text) --- */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* =========================
+       MUTED TEXT & UI
+       ========================= */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 46%;      /* Neutral gray */
 
-    /* --- ACCENTS --- */
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* =========================
+       ACCENTS (Hover, Chips)
+       ========================= */
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
-    /* --- DESTRUCTIVE (Red) --- */
-    --destructive: 0 84.2% 60.2%;
+    /* =========================
+       DESTRUCTIVE (Errors)
+       ========================= */
+    --destructive: 0 72% 55%;              /* Calm red, not aggressive */
     --destructive-foreground: 210 40% 98%;
 
-    /* --- BORDERS & INPUTS --- */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 226 70% 55%; /* Matches Primary */
+    /* =========================
+       BORDERS, INPUTS, FOCUS
+       ========================= */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 226 70% 55%;                   /* Same as primary */
 
-    --radius: 0.5rem;
+    /* =========================
+       SHAPE
+       ========================= */
+    --radius: 0.75rem;                     /* Slightly more modern */
   }
 
-  /* --- DARK MODE (Optional - Tuned for "Professional Dark", not Pitch Black) --- */
+  /* =========================
+     DARK MODE (Professional)
+     ========================= */
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 11%;             /* Deep slate */
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+
+    --card: 222 47% 13%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+
+    --popover: 222 47% 13%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+
+    --primary: 226 80% 65%;                /* Brighter indigo */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+
+    --destructive: 0 63% 45%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 226 80% 65%;
   }
 }
 
@@ -71,9 +100,9 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    /* Ensures the font is crisp */
-    font-feature-settings: "rlig" 1, "calt" 1; 
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
