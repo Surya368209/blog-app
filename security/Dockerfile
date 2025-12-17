@@ -11,15 +11,18 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Run the app
-# We use "Shell Form" (no brackets) so we can read variables like ${DB_URL}
-# This command injects EVERY variable manually, bypassing the broken yaml file.
+# Added: spring.mail.host, port, and starttls settings
 ENTRYPOINT java \
     -Dspring.datasource.url=${DB_URL} \
     -Dspring.datasource.username=${DB_USERNAME} \
     -Dspring.datasource.password=${DB_PASSWORD} \
     -Djwt.secret=${JWT_SECRET} \
+    -Dspring.mail.host=smtp.gmail.com \
+    -Dspring.mail.port=587 \
     -Dspring.mail.username=${MAIL_USERNAME} \
     -Dspring.mail.password=${MAIL_PASSWORD} \
+    -Dspring.mail.properties.mail.smtp.auth=true \
+    -Dspring.mail.properties.mail.smtp.starttls.enable=true \
     -Dapplication.frontend.reset-password-url=${FRONTEND_URL} \
     -Dserver.port=${PORT} \
     -jar target/security-0.0.1-SNAPSHOT.jar
