@@ -1,11 +1,11 @@
-# Use an official Java runtime as a parent image
 FROM eclipse-temurin:21-jdk-alpine
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the project files
 COPY . .
+
+# ---  TO FIX PERMISSIONS ---
+RUN chmod +x mvnw
 
 # Build the application
 RUN ./mvnw clean package -DskipTests
