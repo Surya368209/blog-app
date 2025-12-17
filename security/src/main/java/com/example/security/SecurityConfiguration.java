@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 1. Auth endpoints (Login/Register)
                 .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/post/image/**").permitAll()
             
                 // 2.ALLOW VIEWING POSTS (Feed, Details, User Profiles)
                 // This allows /api/v1/posts, /api/v1/posts/{id}, and /api/v1/posts/users/{id}/posts
