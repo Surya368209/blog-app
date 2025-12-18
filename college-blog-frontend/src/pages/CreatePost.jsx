@@ -109,7 +109,8 @@ export default function CreatePost() {
   return (
     <div className="max-w-3xl mx-auto py-8 px-4">
       
-      <Card className="shadow-lg border-zinc-200 bg-white">
+      {/* ADDED: rounded-none to Card */}
+      <Card className="shadow-lg border-zinc-200 bg-white rounded-none">
         
         {/* Header Section */}
         <CardHeader className="border-b border-zinc-100 pb-4">
@@ -118,10 +119,11 @@ export default function CreatePost() {
             
             {/* User Context: Shows who is posting */}
             {user && (
-                <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-full border border-zinc-200">
+                // ADDED: rounded-none to user badge
+                <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 border border-zinc-200 rounded-none">
                     <Avatar className="h-6 w-6">
                         <AvatarImage src={getFullImageUrl(user.profileImageUrl)} />
-                        <AvatarFallback className="text-[10px] bg-indigo-100 text-indigo-700">{getInitials()}</AvatarFallback>
+                        <AvatarFallback className="text-[10px] bg-indigo-100 text-indigo-700 rounded-none">{getInitials()}</AvatarFallback>
                     </Avatar>
                     <span className="text-xs font-medium text-zinc-600">
                         Posting as <span className="text-zinc-900 font-bold">{user.firstName}</span>
@@ -136,7 +138,8 @@ export default function CreatePost() {
             
             {/* Error Message Display */}
             {error && (
-                <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm flex items-center gap-2 border border-red-100">
+                // ADDED: rounded-none
+                <div className="bg-red-50 text-red-600 p-3 text-sm flex items-center gap-2 border border-red-100 rounded-none">
                     <AlertCircle className="h-4 w-4" />
                     {error}
                 </div>
@@ -145,12 +148,13 @@ export default function CreatePost() {
             {/* 1. TITLE INPUT */}
             <div className="space-y-2">
               <Label htmlFor="title" className="text-zinc-700 font-medium">Title</Label>
+              {/* ADDED: rounded-none */}
               <Input 
                 id="title" 
                 placeholder="What's the topic? (e.g. Exam Schedule)" 
                 value={formData.title}
                 onChange={handleChange}
-                className="text-lg font-medium bg-zinc-50/50 focus:bg-white border-zinc-200 focus:border-indigo-500 transition-all"
+                className="text-lg font-medium bg-zinc-50/50 focus:bg-white border-zinc-200 focus:border-indigo-500 transition-all rounded-none"
               />
             </div>
 
@@ -158,10 +162,12 @@ export default function CreatePost() {
             <div className="space-y-2">
               <Label className="text-zinc-700 font-medium">Category</Label>
               <Select value={formData.category} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="bg-zinc-50/50 border-zinc-200 w-full md:w-[200px]">
+                {/* ADDED: rounded-none to Trigger */}
+                <SelectTrigger className="bg-zinc-50/50 border-zinc-200 w-full md:w-[200px] rounded-none">
                   <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                {/* ADDED: rounded-none to Content */}
+                <SelectContent className="bg-white rounded-none">
                   <SelectItem value="GENERAL">General</SelectItem>
                   <SelectItem value="NOTICE" className="text-red-600 font-medium">Notice</SelectItem>
                   <SelectItem value="DOUBT" className="text-orange-600 font-medium">Doubt</SelectItem>
@@ -176,12 +182,13 @@ export default function CreatePost() {
                 <ImageIcon className="h-4 w-4 text-zinc-400" /> Image URL <span className="text-zinc-400 font-normal text-xs">(Optional)</span>
               </Label>
               <div className="flex gap-2">
+                {/* ADDED: rounded-none */}
                 <Input 
                   id="imageUrl" 
                   placeholder="https://..." 
                   value={formData.imageUrl}
                   onChange={handleChange}
-                  className="bg-zinc-50/50 border-zinc-200"
+                  className="bg-zinc-50/50 border-zinc-200 rounded-none"
                 />
                 {formData.imageUrl && (
                   <Button 
@@ -189,7 +196,7 @@ export default function CreatePost() {
                     variant="ghost" 
                     size="icon" 
                     onClick={() => setFormData(prev => ({...prev, imageUrl: ""}))}
-                    className="text-zinc-400 hover:text-red-500"
+                    className="text-zinc-400 hover:text-red-500 rounded-none"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -198,7 +205,8 @@ export default function CreatePost() {
 
               {/* Live Preview */}
               {formData.imageUrl && (
-                <div className="mt-3 rounded-lg overflow-hidden border border-zinc-200 bg-zinc-50 relative group">
+                // ADDED: rounded-none (Removed rounded-lg)
+                <div className="mt-3 overflow-hidden border border-zinc-200 bg-zinc-50 relative group rounded-none">
                    <img 
                      src={formData.imageUrl} 
                      alt="Preview" 
@@ -212,29 +220,31 @@ export default function CreatePost() {
             {/* 4. CONTENT TEXTAREA */}
             <div className="space-y-2">
               <Label htmlFor="content" className="text-zinc-700 font-medium">Content</Label>
+              {/* ADDED: rounded-none */}
               <Textarea 
                 id="content" 
                 placeholder="Write the details here..." 
                 value={formData.content}
                 onChange={handleChange}
-                className="min-h-[200px] text-base resize-y bg-zinc-50/50 focus:bg-white border-zinc-200 focus:border-indigo-500"
+                className="min-h-[200px] text-base resize-y bg-zinc-50/50 focus:bg-white border-zinc-200 focus:border-indigo-500 rounded-none"
               />
             </div>
 
             {/* ACTION FOOTER */}
             <div className="flex justify-end items-center gap-4 pt-4 border-t border-zinc-100">
+              {/* ADDED: rounded-none to Buttons */}
               <Button 
                 type="button" 
                 variant="ghost" 
                 onClick={() => navigate("/")}
-                className="text-zinc-500 hover:text-zinc-900"
+                className="text-zinc-500 hover:text-zinc-900 rounded-none"
               >
                 Cancel
               </Button>
               <Button 
                 type="submit" 
                 size="lg" 
-                className="bg-indigo-600 hover:bg-indigo-700 text-white min-w-[140px] shadow-md shadow-indigo-100" 
+                className="bg-indigo-600 hover:bg-indigo-700 text-white min-w-[140px] shadow-md shadow-indigo-100 rounded-none" 
                 disabled={loading}
               >
                 {loading ? (
